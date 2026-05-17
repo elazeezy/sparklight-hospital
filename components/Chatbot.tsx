@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef, useEffect, useCallback } from 'react';
+import { useState, useRef, useEffect, useCallback } from 'react'; // useCallback kept for sendMessage
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface Message {
@@ -114,58 +114,12 @@ const GREETING_MSG: Message = {
 
 export default function Chatbot() {
   const [open, setOpen] = useState(false);
-  const [hasAutoOpened, setHasAutoOpened] = useState(false);
   const [messages, setMessages] = useState<Message[]>([{ ...GREETING_MSG, time: formatTime() }]);
   const [input, setInput] = useState('');
   const [typing, setTyping] = useState(false);
   const [unread, setUnread] = useState(1);
   const endRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
-  const audioRef = useRef<AudioContext | null>(null);
-
-  // Play a soft notification chime using Web Audio API
-  const playChime = useCallback(() => {
-    try {
-      const ctx = new (window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext)();
-      audioRef.current = ctx;
-
-      const playNote = (freq: number, startTime: number, duration: number, vol: number) => {
-        const osc = ctx.createOscillator();
-        const gain = ctx.createGain();
-        osc.connect(gain);
-        gain.connect(ctx.destination);
-        osc.type = 'sine';
-        osc.frequency.setValueAtTime(freq, startTime);
-        gain.gain.setValueAtTime(0, startTime);
-        gain.gain.linearRampToValueAtTime(vol, startTime + 0.02);
-        gain.gain.exponentialRampToValueAtTime(0.001, startTime + duration);
-        osc.start(startTime);
-        osc.stop(startTime + duration);
-      };
-
-      const now = ctx.currentTime;
-      playNote(880, now, 0.3, 0.12);
-      playNote(1100, now + 0.12, 0.3, 0.1);
-      playNote(1320, now + 0.24, 0.5, 0.08);
-    } catch {
-      // Audio not available — silently skip
-    }
-  }, []);
-
-  // Auto-open chatbot after 3s on first visit
-  useEffect(() => {
-    if (hasAutoOpened) return;
-    const timer = setTimeout(() => {
-      setHasAutoOpened(true);
-      playChime();
-      // Brief delay so chime plays before window opens
-      setTimeout(() => {
-        setOpen(true);
-        setUnread(0);
-      }, 350);
-    }, 3000);
-    return () => clearTimeout(timer);
-  }, [hasAutoOpened, playChime]);
 
   useEffect(() => {
     if (open) {

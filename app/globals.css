@@ -40,6 +40,7 @@ html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  height: 100%;
 }
 
 body {
@@ -47,6 +48,9 @@ body {
   color: var(--text-primary);
   font-family: 'DM Sans', system-ui, sans-serif;
   line-height: 1.75;
+  /* Momentum scrolling on iOS */
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-y: none;
 }
 
 h1, h2, h3 {

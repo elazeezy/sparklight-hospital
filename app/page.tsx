@@ -70,53 +70,49 @@ function HeroSection() {
       <div className="absolute top-1/4 right-1/3 w-96 h-96 rounded-full bg-[#D4A017]/8 blur-3xl pointer-events-none" />
       <div className="absolute bottom-1/3 left-1/4 w-80 h-80 rounded-full bg-[#A8C5A0]/10 blur-3xl pointer-events-none" />
 
-      {/* ── Floating image cards (right side) ── */}
-      <div className="absolute right-4 sm:right-8 lg:right-16 top-1/2 -translate-y-1/2 flex flex-col gap-3 z-10 xl:gap-4">
-        {/* Mobile: compact single card, full on xl */}
-        {/* Card 1 — visible from sm upward */}
+      {/* ── Floating image cards (right side) — desktop only ── */}
+      <div className="absolute right-8 lg:right-16 top-1/2 -translate-y-1/2 hidden sm:flex flex-col gap-4 z-10">
         <motion.div
           initial={{ opacity: 0, x: 60, rotate: 3 }}
           animate={{ opacity: 1, x: 0, rotate: 3 }}
           transition={{ delay: 0.8, duration: 0.9, ease: [0.32, 0.72, 0, 1] }}
-          className="relative w-32 h-24 sm:w-44 sm:h-32 xl:w-52 xl:h-36 rounded-xl xl:rounded-2xl overflow-hidden shadow-2xl ring-1 ring-white/20"
+          className="relative w-44 h-32 xl:w-52 xl:h-36 rounded-2xl overflow-hidden shadow-2xl ring-1 ring-white/20"
         >
-          <Image src={IMGS.heroCard1} alt="Doctors" fill className="object-cover" sizes="(max-width:640px) 128px,(max-width:1280px) 176px, 208px" />
+          <Image src={IMGS.heroCard1} alt="Doctors" fill className="object-cover" sizes="(max-width:1280px) 176px, 208px" />
           <div className="absolute inset-0 bg-gradient-to-t from-[#1B4332]/70 to-transparent" />
-          <div className="absolute bottom-1.5 left-2 xl:bottom-2 xl:left-3">
-            <p className="text-white text-[10px] xl:text-xs font-semibold">Expert Doctors</p>
-            <p className="text-white/60 text-[9px] xl:text-[10px] hidden sm:block">Board-certified specialists</p>
+          <div className="absolute bottom-2 left-3">
+            <p className="text-white text-xs font-semibold">Expert Doctors</p>
+            <p className="text-white/60 text-[10px]">Board-certified specialists</p>
           </div>
         </motion.div>
 
-        {/* Card 2 — hidden on very small, compact on sm */}
         <motion.div
           initial={{ opacity: 0, x: 60, rotate: -2 }}
           animate={{ opacity: 1, x: 0, rotate: -2 }}
           transition={{ delay: 1.0, duration: 0.9, ease: [0.32, 0.72, 0, 1] }}
-          className="hidden sm:block relative w-32 h-24 sm:w-44 sm:h-32 xl:w-52 xl:h-36 rounded-xl xl:rounded-2xl overflow-hidden shadow-2xl ring-1 ring-white/20 ml-4 xl:ml-8"
+          className="relative w-44 h-32 xl:w-52 xl:h-36 rounded-2xl overflow-hidden shadow-2xl ring-1 ring-white/20 ml-8"
         >
           <Image src={IMGS.heroCard2} alt="Lab" fill className="object-cover" sizes="(max-width:1280px) 176px, 208px" />
           <div className="absolute inset-0 bg-gradient-to-t from-[#1B4332]/70 to-transparent" />
-          <div className="absolute bottom-1.5 left-2 xl:bottom-2 xl:left-3">
-            <p className="text-white text-[10px] xl:text-xs font-semibold">Modern Lab</p>
-            <p className="text-white/60 text-[9px] xl:text-[10px] hidden sm:block">Fast, accurate diagnostics</p>
+          <div className="absolute bottom-2 left-3">
+            <p className="text-white text-xs font-semibold">Modern Lab</p>
+            <p className="text-white/60 text-[10px]">Fast, accurate diagnostics</p>
           </div>
         </motion.div>
 
-        {/* Live badge */}
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 1.3, duration: 0.6, ease: [0.32, 0.72, 0, 1] }}
-          className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-xl xl:rounded-2xl p-2 xl:p-3 flex items-center gap-2 xl:gap-3"
+          className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-3 flex items-center gap-3"
         >
-          <span className="relative flex h-2.5 w-2.5 xl:h-3 xl:w-3"><span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" /><span className="relative inline-flex rounded-full h-full w-full bg-emerald-400" /></span>
-          <div><p className="text-white text-[10px] xl:text-xs font-semibold">Emergency Open</p><p className="text-white/50 text-[9px] xl:text-[10px]">24/7 · All days</p></div>
+          <span className="relative flex h-3 w-3"><span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" /><span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-400" /></span>
+          <div><p className="text-white text-xs font-semibold">Emergency Open</p><p className="text-white/50 text-[10px]">24/7 · All days</p></div>
         </motion.div>
       </div>
 
       {/* Main text */}
-      <motion.div style={{ y: textY, opacity }} className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-24 pr-36 sm:pr-52 xl:pr-80">
+      <motion.div style={{ y: textY, opacity }} className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-20 sm:pr-52 xl:pr-80">
         <div className="max-w-3xl">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.65, ease: [0.32, 0.72, 0, 1] }}
             className="inline-flex items-center gap-2 bg-white/10 backdrop-blur border border-white/20 text-white/90 text-xs font-semibold tracking-widest uppercase px-4 py-2 rounded-full mb-8">
@@ -125,7 +121,7 @@ function HeroSection() {
           </motion.div>
 
           <motion.h1 initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.1, ease: [0.32, 0.72, 0, 1] }}
-            className="font-display text-6xl md:text-7xl lg:text-8xl font-semibold text-white leading-[1.05] tracking-[-0.04em] mb-6">
+            className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-semibold text-white leading-[1.05] tracking-[-0.04em] mb-6">
             Your Health.<br /><span className="text-[#D4A017]">Our Calling.</span>
           </motion.h1>
 
@@ -429,7 +425,7 @@ function MembershipTeaser() {
 /* ─── Blog teaser ─── */
 function BlogTeaser() {
   const posts = [
-    { slug: 'malaria-prevention', category: 'Health Tips', title: 'Malaria Prevention in Lagos: What Every Family Should Know', date: 'May 12, 2026', img: 'https://images.unsplash.com/photo-1581093804475-577d72e35330?w=600&q=80&auto=format&fit=crop', readTime: '4 min read' },
+    { slug: 'malaria-prevention', category: 'Health Tips', title: 'Malaria Prevention in Lagos: What Every Family Should Know', date: 'May 12, 2026', img: 'https://images.unsplash.com/photo-1530026405186-ed1f139313f8?w=600&q=80&auto=format&fit=crop', readTime: '4 min read' },
     { slug: 'maternal-health', category: 'Maternity', title: 'Your Complete Antenatal Care Guide for a Healthy Pregnancy', date: 'May 8, 2026', img: 'https://images.unsplash.com/photo-1609220136736-443140cffec6?w=600&q=80&auto=format&fit=crop', readTime: '6 min read' },
     { slug: 'child-vaccination', category: 'Pediatrics', title: "The 2026 Nigerian Immunization Schedule: Your Child's Vaccine Checklist", date: 'Apr 29, 2026', img: 'https://images.unsplash.com/photo-1582560475093-ba66accbc424?w=600&q=80&auto=format&fit=crop', readTime: '5 min read' },
   ];

@@ -17,7 +17,7 @@ const posts = [
     readTime: '4 min read',
     author: 'Dr. Tunde Adeyemi',
     authorRole: 'Internal Medicine',
-    img: 'https://images.unsplash.com/photo-1581093804475-577d72e35330?w=800&q=80&auto=format&fit=crop',
+    img: 'https://images.unsplash.com/photo-1530026405186-ed1f139313f8?w=800&q=80&auto=format&fit=crop',
     featured: true,
   },
   {

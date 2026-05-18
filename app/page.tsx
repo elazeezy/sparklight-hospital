@@ -57,8 +57,8 @@ function HeroSection() {
     <section ref={ref} className="relative min-h-[100dvh] flex items-center bg-[#1B4332] overflow-hidden">
       {/* Parallax BG image */}
       <motion.div className="absolute inset-0 z-0" style={{ y: bgY }}>
-        <Image src={IMGS.hero} alt="Hospital" fill className="object-cover opacity-25" priority sizes="100vw" />
-        <div className="absolute inset-0 bg-gradient-to-br from-[#1B4332]/95 via-[#1B4332]/80 to-[#12301f]/90" />
+        <Image src={IMGS.hero} alt="Hospital" fill className="object-cover opacity-50" priority sizes="100vw" />
+        <div className="absolute inset-0 bg-gradient-to-br from-[#1B4332]/75 via-[#1B4332]/60 to-[#12301f]/70" />
       </motion.div>
 
       {/* Geometric grid */}
